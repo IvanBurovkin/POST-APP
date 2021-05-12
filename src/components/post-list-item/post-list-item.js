@@ -53,69 +53,29 @@ const ButtonGroup = styled.div`
 `;
 
 export default class PostListItem extends Component {
-  /* constructor(props) {
-    super(props);
-    this.state = {
-      important: false,
-      like: false
-    };
-    this.onImportant = this.onImportant.bind(this);
-    this.onLike = this.onLike.bind(this);
-  }
-
-  onImportant() {
-    this.setState(({important}) => ({
-      important: !important
-    }))
-  }
-
-  onLike() {
-    this.setState(({like}) => ({
-      like: !like
-    }))
-  } */
-
-  //Class Field
-
-  state = {
-    important: false,
-    like: false
-  };
-
-  onImportant = () => {
-    this.setState(({important}) => ({
-      important: !important
-    }))
-  }
-
-  onLike = () => {
-    this.setState(({like}) => ({
-      like: !like
-    }))
-  }
-
   render() {
-    const {label} = this.props;
+    const {label, onDelete, onToggleImportant, onToggleLiked, important, like} = this.props;
     
     return (
       <PostListItemBlock 
-      important={this.state.important}
-      like={this.state.like}>
+      important={important}
+      like={like}>
         <PostListItemLabel
-        important={this.state.important} 
-        onClick={this.onLike}>
+        important={important} 
+        onClick={onToggleLiked}>
           {label}
         </PostListItemLabel>
         <ButtonGroup>
           <button
           type="button"
           className="btn-star btn-sm"
-          onClick={this.onImportant}>
+          onClick={onToggleImportant}>
             <i className="fa fa-star"></i>
           </button>
           <button
           type="button"
-          className="btn-trash btn-sm">
+          className="btn-trash btn-sm"
+          onClick={onDelete}>
             <i className="fa fa-trash"></i>
           </button>
           <i className="fa fa-heart"></i>
