@@ -1,7 +1,16 @@
 import React from 'react';
 
 import PostListItem from '../post-list-item/post-list-item';
-import './post-list.css';
+import styled from 'styled-components';
+
+const ListGroupBlock = styled.ul`
+  margin-top: 50px;
+  padding-inline-start: 0;
+  .list-group-item {
+    padding: 10px 35px 10px 35px;
+    margin-top: 10px;
+  }
+`;
 
 const PostList = ({posts}) => {
 
@@ -15,9 +24,9 @@ const PostList = ({posts}) => {
   })
 
   return (
-    <ul className="app-list list-group">
+    <ListGroupBlock>
       {elements}
-    </ul>
+    </ListGroupBlock>
   )
 }
 
